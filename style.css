@@ -785,15 +785,15 @@ main {
 }
 
 .letter-title {
-  font-family: var(--font-script);
-  font-size: 2.5rem;
+  font-family: var(--font-khmer), var(--font-script), sans-serif;
+  font-size: 2.2rem;
   color: var(--wax-red);
   margin-bottom: 24px;
 }
 
 .letter-body p {
   margin-bottom: 20px;
-  font-family: var(--font-serif);
+  font-family: var(--font-khmer), var(--font-serif), sans-serif;
   color: #3b2831;
 }
 
@@ -804,6 +804,7 @@ main {
 .letter-signature {
   margin-top: 40px;
   text-align: right;
+  font-family: var(--font-khmer), var(--font-body), sans-serif;
 }
 
 .letter-signature p {
@@ -812,8 +813,8 @@ main {
 }
 
 .signature-name {
-  font-family: var(--font-script);
-  font-size: 2.2rem;
+  font-family: var(--font-khmer), var(--font-script), cursive;
+  font-size: 2rem;
   color: var(--wax-red);
   margin-top: 4px;
 }
@@ -1116,13 +1117,24 @@ main {
 
 @media (max-width: 600px) {
   .top-nav {
-    padding: 12px 16px;
+    padding: 10px 14px;
+    gap: 8px;
   }
   .brand-tag {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+  }
+  .audio-controls {
+    gap: 6px;
+  }
+  .glass-pill-btn {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    gap: 5px;
   }
   .glass-container {
-    padding: 32px 20px;
+    padding: 28px 16px;
+    border-radius: 20px;
   }
   .envelope {
     width: 280px;
@@ -1139,16 +1151,77 @@ main {
     border-bottom-width: 105px;
   }
   .letter-parchment {
-    padding: 40px 24px;
-    font-size: 1.05rem;
+    padding: 36px 18px 28px 18px;
+    font-size: 1rem;
+    line-height: 1.8;
+    word-break: break-word;
+  }
+  .parchment-stamp {
+    top: 14px;
+    right: 14px;
+    font-size: 0.68rem;
+    padding: 4px 10px;
   }
   .letter-title {
-    font-size: 2rem;
+    font-size: 1.6rem;
+    margin-top: 18px;
+  }
+  .signature-name {
+    font-size: 1.5rem;
   }
   .counter-timer {
     gap: 6px;
   }
   .time-unit {
-    min-width: 52px;
+    min-width: 48px;
+  }
+  .time-val {
+    font-size: 1.6rem;
+  }
+  .time-colon {
+    font-size: 1.4rem;
+    padding-bottom: 12px;
+  }
+  .cake-stage {
+    transform: scale(0.92);
+    margin: 15px auto;
+  }
+  .polaroid-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 280px;
+    margin: 20px auto 0 auto;
+  }
+  .polaroid-card {
+    transform: rotate(0deg) !important;
+  }
+  .polaroid-card:active {
+    transform: scale(1.03) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand-tag {
+    display: none;
+  }
+  .top-nav {
+    justify-content: flex-end;
+  }
+  .envelope {
+    width: 260px;
+    height: 175px;
+  }
+  .envelope-flap {
+    border-left-width: 130px;
+    border-right-width: 130px;
+    border-top-width: 90px;
+  }
+  .envelope-pocket {
+    border-left-width: 130px;
+    border-right-width: 130px;
+    border-bottom-width: 95px;
+  }
+  .cake-stage {
+    transform: scale(0.85);
   }
 }
