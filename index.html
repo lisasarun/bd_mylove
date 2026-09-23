@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, My Love ❤️ | To My Besdong</title>
+  <meta name="description" content="A special romantic birthday celebration made with all my heart for the one I love.">
+  
+  <!-- Google Fonts for luxury typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Kantumruy+Pro:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Canvas Background for Stars & Hearts -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Audio Controls Bar -->
+  <header class="top-nav">
+    <div class="brand-tag">
+      <span class="pulse-dot"></span> Special Birthday Surprise
+    </div>
+    <div class="audio-controls">
+      <button id="music-toggle-btn" class="glass-pill-btn" title="Play romantic music">
+        <span id="music-icon">🎵</span>
+        <span id="music-text">Play Romantic Melody</span>
+      </button>
+      <label class="glass-pill-btn file-upload-label" title="Upload your own song (MP3)">
+        <span>📁 Custom Song</span>
+        <input type="file" id="custom-audio-input" accept="audio/*" style="display: none;">
+      </label>
+      <audio id="bg-audio" loop></audio>
+    </div>
+  </header>
+
+  <!-- Section 1: Intro Envelope / Mystery Present -->
+  <section id="envelope-section" class="scene active-scene">
+    <div class="envelope-wrapper">
+      <div class="glow-orb"></div>
+      
+      <div class="romantic-badge">A GIFT FROM MY HEART</div>
+      <h1 class="main-title">Happy Birthday, <span class="heartbeat-text">My Besdong</span> ❤️</h1>
+      <p class="subtitle">There is a special message locked inside just for you...</p>
+
+      <div class="envelope" id="love-envelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-pocket"></div>
+        <div class="envelope-letter-peek">
+          <span class="peek-heart">💌</span>
+          <p>For the love of my life</p>
+        </div>
+        <div class="wax-seal" id="wax-seal">
+          <div class="seal-inner">❤️</div>
+          <span class="seal-glow"></span>
+        </div>
+      </div>
+
+      <button id="open-envelope-btn" class="cta-magic-btn">
+        <span class="btn-sparkle">✨</span> Open Your Birthday Surprise <span class="btn-sparkle">✨</span>
+      </button>
+      <p class="tap-hint">Tap the seal or click the button to unfold the magic</p>
+    </div>
+  </section>
+
+  <!-- Main Experience Wrapper (Reveals after opening) -->
+  <main id="main-content" class="hidden-scene">
+    
+    <!-- Hero Banner with Personal Greeting -->
+    <section class="hero-section">
+      <div class="glass-container hero-card">
+        <div class="sparkle-tag">✨ HAPPY BIRTHDAY TO MY WHOLE WORLD ✨</div>
+        <h2 class="hero-heading">To My Sweetheart, My Soulmate, My Everything</h2>
+        <p class="hero-quote">
+          "In a world full of billions of people, my eyes will always search for you, and my heart will always beat only for you."
+        </p>
+        
+        <!-- Interactive Love Counter / Milestone -->
+        <div class="love-counter-box">
+          <div class="counter-header">
+            <span>⏳ Counting Every Beautiful Second With You</span>
+          </div>
+          <div class="counter-timer" id="love-timer">
+            <div class="time-unit">
+              <span class="time-val" id="timer-days">365</span>
+              <span class="time-label">Days</span>
+            </div>
+            <div class="time-colon">:</div>
+            <div class="time-unit">
+              <span class="time-val" id="timer-hours">24</span>
+              <span class="time-label">Hours</span>
+            </div>
+            <div class="time-colon">:</div>
+            <div class="time-unit">
+              <span class="time-val" id="timer-minutes">59</span>
+              <span class="time-label">Minutes</span>
+            </div>
+            <div class="time-colon">:</div>
+            <div class="time-unit">
+              <span class="time-val" id="timer-seconds">59</span>
+              <span class="time-label">Seconds</span>
+            </div>
+          </div>
+          <small class="counter-footnote">And I will love you for infinity more days to come...</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: The Interactive Birthday Cake -->
+    <section class="cake-section">
+      <div class="glass-container cake-container">
+        <div class="section-badge">🎂 CELEBRATION TIME</div>
+        <h2 class="section-title">Make a Wish, My Love!</h2>
+        <p class="section-desc">Close your eyes, hold your wish deep in your heart, and blow out your birthday candles.</p>
+
+        <!-- The Cake SVG / 3D CSS Construct -->
+        <div class="cake-stage" id="cake-stage">
+          <div class="plate"></div>
+          
+          <!-- Cake Layers -->
+          <div class="cake-tier bottom-tier">
+            <div class="frosting-drops">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="cake-decorations">🍓 🍓 🍓 🍓 🍓</div>
+          </div>
+          
+          <div class="cake-tier top-tier">
+            <div class="frosting-drops">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="frosting-text">I LOVE YOU</div>
+          </div>
+
+          <!-- Candle & Flame -->
+          <div class="candle" id="birthday-candle">
+            <div class="candle-stripe"></div>
+            <div class="flame-wrapper" id="flame-wrapper">
+              <div class="flame"></div>
+              <div class="flame-glow"></div>
+            </div>
+            <div class="smoke-puff" id="smoke-puff"></div>
+          </div>
+        </div>
+
+        <div class="cake-action-bar">
+          <button id="blow-candles-btn" class="cta-blow-btn">
+            💨 Blow Out The Candles!
+          </button>
+          <div id="wish-status" class="wish-status hidden">
+            ✨ Your wish has been sent to the stars! May all your dreams come true, my love! ✨
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: The Handwritten Love Letter -->
+    <section class="letter-section">
+      <div class="letter-parchment">
+        <div class="parchment-stamp">❤️ រៀងរហូត</div>
+        <h3 class="letter-title">ជូនចំពោះ បងសម្លាញ់ (បេះដូងអូន) ❤️</h3>
+        
+        <div class="letter-body">
+          <p>
+            រីករាយថ្ងៃខួបកំណើតណា បុរសដ៏ល្អ និងអស្ចារ្យបំផុតក្នុងជីវិតរបស់អូន! ថ្ងៃនេះគឺជាថ្ងៃដ៏ពិសេសបំផុតដែលពិភពលោកបានផ្ដល់កាដូដ៏មានតម្លៃបំផុតដល់អូន គឺរូប<strong>បង</strong>។
+          </p>
+          <p>
+            ចាប់តាំងពីពេលដែលបងបានឈានជើងចូលមកក្នុងជីវិតរបស់អូន អ្វីៗទាំងអស់ប្រែជាមានពន្លឺ កក់ក្ដៅ និងពោរពេញដោយអត្ថន័យ។ ស្នាមញញឹម និងសម្លេងសើចរបស់បង គឺជាក្ដីសុខ និងជាកម្លាំងចិត្តដ៏ធំបំផុតរបស់អូនរាល់ថ្ងៃ។
+          </p>
+          <p>
+            នៅក្នុងថ្ងៃខួបកំណើតរបស់បង អូនសូមសន្យាថានឹងនៅក្បែរបង ស្រឡាញ់បង និងលើកទឹកចិត្តបងរាល់ពេល មិនថាក្នុងពេលសប្បាយ ឬជួបការលំបាកឡើយ។
+          </p>
+          <p>
+            សង្ឃឹមថាបងនឹងសប្បាយចិត្តកាន់តែច្រើន មានសុខភាពល្អ និងរកលុយបានច្រើនៗណាបងសម្លាញ់! សូមឱ្យរាល់ក្ដីស្រមៃរបស់បងបានសម្រេចដូចបំណងប្រាថ្នាទាំងអស់។
+          </p>
+        </div>
+
+        <div class="letter-signature">
+          <p>ស្រឡាញ់បងចេញពីបេះដូង,</p>
+          <h4 class="signature-name">ស្រឡាញ់បងរហូត បេះដូងអូន ❤️</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Polaroid Memory Wall -->
+    <section class="memory-section">
+      <div class="glass-container">
+        <div class="section-badge">📸 OUR BEAUTIFUL MOMENTS</div>
+        <h2 class="section-title">Treasured Memories With You</h2>
+        <p class="section-desc">Every moment spent with you is a moment etched into my soul forever.</p>
+        
+        <div class="polaroid-grid">
+          
+          <!-- Polaroid 1 -->
+          <div class="polaroid-card" style="--rotation: -3deg;">
+            <div class="tape-strip"></div>
+            <div class="polaroid-photo">
+              <img id="photo-0" src="images/photo1.jpg" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&auto=format&fit=crop&q=80'" alt="Romantic Memory 1">
+              <label class="photo-overlay-btn" for="direct-file-0">
+                <span>📷 Click to change</span>
+                <input type="file" id="direct-file-0" accept="image/*" onchange="handleDirectUpload(event, 0)" style="display: none;">
+              </label>
+            </div>
+            <div class="polaroid-caption">Your smile that melts my heart ✨</div>
+            <label class="card-upload-badge" for="direct-file-0">📁 Choose Photo</label>
+          </div>
+
+          <!-- Polaroid 2 -->
+          <div class="polaroid-card" style="--rotation: 2.5deg;">
+            <div class="tape-strip"></div>
+            <div class="polaroid-photo">
+              <img id="photo-1" src="images/photo2.jpg" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&auto=format&fit=crop&q=80'" alt="Romantic Memory 2">
+              <label class="photo-overlay-btn" for="direct-file-1">
+                <span>📷 Click to change</span>
+                <input type="file" id="direct-file-1" accept="image/*" onchange="handleDirectUpload(event, 1)" style="display: none;">
+              </label>
+            </div>
+            <div class="polaroid-caption">Holding hands everywhere we go 💕</div>
+            <label class="card-upload-badge" for="direct-file-1">📁 Choose Photo</label>
+          </div>
+
+          <!-- Polaroid 3 -->
+          <div class="polaroid-card" style="--rotation: -2deg;">
+            <div class="tape-strip"></div>
+            <div class="polaroid-photo">
+              <img id="photo-2" src="images/photo3.jpg" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&auto=format&fit=crop&q=80'" alt="Romantic Memory 3">
+              <label class="photo-overlay-btn" for="direct-file-2">
+                <span>📷 Click to change</span>
+                <input type="file" id="direct-file-2" accept="image/*" onchange="handleDirectUpload(event, 2)" style="display: none;">
+              </label>
+            </div>
+            <div class="polaroid-caption">Every sunset is magical with you 🌅</div>
+            <label class="card-upload-badge" for="direct-file-2">📁 Choose Photo</label>
+          </div>
+
+          <!-- Polaroid 4 -->
+          <div class="polaroid-card" style="--rotation: 3.5deg;">
+            <div class="tape-strip"></div>
+            <div class="polaroid-photo">
+              <img id="photo-3" src="images/photo4.jpg" onerror="this.src='https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&auto=format&fit=crop&q=80'" alt="Romantic Memory 4">
+              <label class="photo-overlay-btn" for="direct-file-3">
+                <span>📷 Click to change</span>
+                <input type="file" id="direct-file-3" accept="image/*" onchange="handleDirectUpload(event, 3)" style="display: none;">
+              </label>
+            </div>
+            <div class="polaroid-caption">To forever and always, my love 💍</div>
+            <label class="card-upload-badge" for="direct-file-3">📁 Choose Photo</label>
+          </div>
+
+        </div>
+
+        <div class="photo-instructions-box">
+          <p><strong>💡 2 Easy Ways to Put Your Photos:</strong></p>
+          <p><strong>Option 1:</strong> Click the <strong>"📁 Choose Photo"</strong> button below each card and select any photo on your Mac (it saves automatically!).</p>
+          <p><strong>Option 2:</strong> Copy your 4 photos into the <code>images</code> folder as <code>photo1.jpg</code>, <code>photo2.jpg</code>, <code>photo3.jpg</code>, and <code>photo4.jpg</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: "Reasons Why I Love You" Flip Cards -->
+    <section class="reasons-section">
+      <div class="glass-container">
+        <div class="section-badge">💖 FROM MY SOUL</div>
+        <h2 class="section-title">Reasons Why I Love You</h2>
+        <p class="section-desc">There are thousands of reasons, but here are just a few close to my heart:</p>
+
+        <div class="reasons-grid">
+          <div class="reason-card" onclick="this.classList.toggle('flipped')">
+            <div class="reason-card-inner">
+              <div class="card-front">
+                <span class="reason-icon">🌸</span>
+                <h3>Your Gentle Heart</h3>
+                <span class="flip-prompt">Tap to flip ↺</span>
+              </div>
+              <div class="card-back">
+                <p>The way you care for others with such tenderness and kindness inspires me every single day.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reason-card" onclick="this.classList.toggle('flipped')">
+            <div class="reason-card-inner">
+              <div class="card-front">
+                <span class="reason-icon">✨</span>
+                <h3>Your Contagious Laugh</h3>
+                <span class="flip-prompt">Tap to flip ↺</span>
+              </div>
+              <div class="card-back">
+                <p>No matter how hard a day is, one sound of your genuine laughter can instantly turn my world around.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reason-card" onclick="this.classList.toggle('flipped')">
+            <div class="reason-card-inner">
+              <div class="card-front">
+                <span class="reason-icon">🌙</span>
+                <h3>My Safe Haven</h3>
+                <span class="flip-prompt">Tap to flip ↺</span>
+              </div>
+              <div class="card-back">
+                <p>In your arms, all my worries disappear. You are the peaceful sanctuary my soul always searched for.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reason-card" onclick="this.classList.toggle('flipped')">
+            <div class="reason-card-inner">
+              <div class="card-front">
+                <span class="reason-icon">👑</span>
+                <h3>Just Being YOU</h3>
+                <span class="flip-prompt">Tap to flip ↺</span>
+              </div>
+              <div class="card-back">
+                <p>You don't have to be anyone else. Exactly who you are is the most perfect person I've ever known.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer with Khmer & English Love Note -->
+    <footer class="romantic-footer">
+      <div class="footer-heart">💖</div>
+      <p class="khmer-quote">រីករាយថ្ងៃខួបកំណើត បេះដូងរបស់ខ្ញុំ (Happy Birthday, My Heart)</p>
+      <p class="footer-copy">Crafted with infinite love just for you on your special day.</p>
+      <button class="small-reset-btn" onclick="celebrateAgain()">🎊 Trigger Fireworks & Confetti 🎊</button>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
